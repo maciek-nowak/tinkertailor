@@ -1,11 +1,13 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class TinkerTailor {
 
     public static void main(String[] args) {
-        int inputLength = 5;
-        int step = 3;
+        int inputLength = 10;
+        int step = 5;
         System.out.println(new TinkerTailor().findTinkerTailorSequence(inputLength, step));
     }
 
@@ -28,12 +30,9 @@ public class TinkerTailor {
     }
 
     private List<Integer> prepareInputList(int inputLength) {
-        List<Integer> inputList = new LinkedList<>();
 
-        for (int i = 1; i <= inputLength; i++) {
-            inputList.add(i);
-        }
-
-        return inputList;
+        return IntStream.rangeClosed(1, inputLength)
+                        .boxed()
+                        .collect(Collectors.toList());
     }
 }
